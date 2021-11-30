@@ -1,0 +1,40 @@
+dotenv: .env
+
+dependencies:
+  # - <organization/repo>@<version>
+  - smartcontractkit/chainlink-brownie-contracts@1.1.1
+compiler:
+  solc:
+    remappings:
+      - '@chainlink=smartcontractkit/chainlink-brownie-contracts@1.1.1'
+
+wallets:
+  from_key: ${PRIVATE_KEY}
+
+networks:
+  default: development  #normal default
+#  default: jdbrownie
+  rinkeby:
+    eth_usd_price_feed: '0x8A753747A1Fa494EC906cE90E9f37563A8AF630e'
+    verify: True
+  mainnet-fork:
+    eth_usd_price_feed: '0x5f4eC3Df9cbd43714FE2740f5E3616155c5b8419'
+    verify: False
+  development:
+    verify: False
+  ganache-local:
+    verify: False
+  jdbrownie:
+    verify: False
+  jdalchemyfork:
+    eth_usd_price_feed: '0x5f4eC3Df9cbd43714FE2740f5E3616155c5b8419'
+    verify: False
+
+
+
+# brownie networks add development jdalchemyfork cmd=ganache-cli host=http://127.0.0.1 port=8545 fork=https://eth-mainnet.alchemyapi.io/v2/L4yxq7hs8F2tCVN2hA0PbwK-FSAyEMGz accounts=10 mnemonic=brownie
+
+
+#brownie networks add Ethereum jdbrownie host=http://127.0.0.1:8545 chainid=1337
+#brownie networks list true
+#brownie console --network jdbrownie
